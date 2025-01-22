@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container mt-md-5">
         <div class="row">
 
             <div class="card my-3">
@@ -30,7 +30,7 @@
                                 <option value="select">Select</option>
                             </select>
                         </div>
-                        <div class="mb-3 col-4" id="input_type_content">
+                        <div class="mb-3 col-md-4" id="input_type_content">
                             <label class="form-label">Field Type</label>
                             <select class="form-select form-control" id="type_attr">
                                 <option value="">--Choose--</option>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 mt-sm-3 mt-md-0">
+            <div class="col-md-6 mt-3 mt-md-0">
                 <div class="card">
                     <div class="card-header">Form Preview</div>
                     <div class="card-body">
@@ -153,13 +153,12 @@
     $('#export_area').val(addFrame);
 });
 
-// Function to format HTML and handle inline content
 function formatHtml(html) {
     let formatted = '';
     let indent = 0;
-    html.split(/(?=<)/g).forEach(function(element) { // Split at every opening tag
+    html.split(/(?=<)/g).forEach(function(element) { 
         element = element.trim();
-        if (element === '') return; // Skip empty strings
+        if (element === '') return; 
         
         if (element.startsWith('</')) {
             indent--; // Closing tag
@@ -176,17 +175,18 @@ function formatHtml(html) {
 
         if (element.startsWith('<') && !element.startsWith('</') && !element.endsWith('/>')) {
             if (!element.startsWith('<label') && !element.startsWith('<span') && !element.startsWith('<strong')) {
-                indent++; // Opening tag
+                indent++; 
             }
         }
     });
-    return formatted.trim(); // Remove trailing newlines or spaces
+    return formatted.trim(); 
 }
 
 
 
             $(document).on('click','#clear_html',function(){
                $('#export_area').val('');
+               $('#form_structure').html('');
             })
 
 
